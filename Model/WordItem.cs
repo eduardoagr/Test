@@ -1,9 +1,11 @@
 ﻿namespace Test.Model;
-public class WordItem {
+public partial class WordItem : ObservableObject {
 
-    public string word { get; set; }
+    [ObservableProperty]
+    public string word;
 
-    public int length { get; set; }
+    [ObservableProperty]
+    public int length;
 
 
 }

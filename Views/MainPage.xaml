@@ -12,7 +12,7 @@
         <HorizontalStackLayout HorizontalOptions="Center">
             <Entry
                 Placeholder="Enter a text"
-                Text="{Binding Word.word}"
+                Text="{Binding Word.Word, Mode=TwoWay}"
                 WidthRequest="500" />
             <Button
                 Grid.Column="1"
@@ -32,11 +32,11 @@
                             <Label
                                 Margin="10,0,0,0"
                                 FontAttributes="Bold"
-                                Text="{Binding word, StringFormat='Word: {0}'}" />
+                                Text="{Binding Word, StringFormat='Word: {0}'}" />
                             <Label
                                 Margin="10,0,0,0"
                                 FontAttributes="Bold"
-                                Text="{Binding length, StringFormat='Count: {0}'}" />
+                                Text="{Binding Length, StringFormat='Count: {0}'}" />
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

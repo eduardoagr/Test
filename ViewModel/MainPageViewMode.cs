@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text;
 
 using Test.Model;
 
@@ -13,17 +12,22 @@ public partial class MainPageViewMode : ObservableObject {
     [ObservableProperty]
     WordItem? word = new();
 
+
     [RelayCommand]
     void ShowWordData() {
 
-        if(!string.IsNullOrWhiteSpace(Word?.word)) {
+        string[] words = Word.Word.Split(' ');
+        WordItems.Clear();
+        foreach(var item in words) {
 
-            string[] words = Word.word.Split(' ');
-            WordItems.Clear();
-            foreach(var item in words) {
-
-                WordItems.Add(new WordItem { word = item, length = item.Length });
-            }
+            WordItems.Add(new WordItem { Word = item, length = item.Length });
         }
+
+        char[] charArray = Word.Word.ToCharArray();
+        Array.Reverse(charArray);
+        string reversedWord = new(charArray);
+        Word.Word = reversedWord;
     }
 }
+
+
