@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Test.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:data="clr-namespace:Test.Model"
+    xmlns:vm="clr-namespace:Test.ViewModel"
+    x:DataType="vm:MainPageViewMode">
+
+    <Grid RowDefinitions="50,Auto">
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry
+                Placeholder="Enter a text"
+                Text="{Binding Word.word}"
+                WidthRequest="500" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding ShowWordDataCommand}"
+                Text="Reverse" />
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Margin="10">
+            <CollectionView
+                Background="Gray"
+                ItemsSource="{Binding WordItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="data:WordItem">
+                        <VerticalStackLayout>
+                            <Label
+                                Margin="10,0,0,0"
+                                FontAttributes="Bold"
+                                Text="{Binding word, StringFormat='Word: {0}'}" />
+                            <Label
+                                Margin="10,0,0,0"
+                                FontAttributes="Bold"
+                                Text="{Binding length, StringFormat='Count: {0}'}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+    </Grid>
+
+
+</ContentPage>
